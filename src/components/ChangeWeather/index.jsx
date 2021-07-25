@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PubSub from 'pubsub-js';
 import 'antd/dist/antd.css';
-import { Slider } from 'antd';
+import { Slider,Button } from 'antd';
 
 const marks = {
     0: {
@@ -33,9 +33,10 @@ export default class ChangeWeather extends Component {
         return (
             <div>
                 <br/>
-                <br/>
                 <h4>温度调节：</h4>
                 <Slider marks={marks} included={false} onChange={this.onChange} defaultValue={this.props.temperature} />
+                <br/>
+                <Button type="primary" block onClick={this.props.onReturn}>返回</Button>
             </div>
         )
     }
