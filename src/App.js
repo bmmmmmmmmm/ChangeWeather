@@ -27,6 +27,32 @@ export default class App extends Component {
     city: "0",
   }
 
+  // 获取经纬度（VPN）
+  test = ()=> {
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+    
+    function success(pos) {
+      var crd = pos.coords;
+    
+      console.log('Your current position is:');
+      console.log('经度: ' + crd.longitude);
+      console.log('纬度 : ' + crd.latitude);
+      console.log(crd);
+      console.log('More or less ' + crd.accuracy + ' meters.');
+    };
+    
+    function error(err) {
+      console.warn('ERROR(' + err.code + '): ' + err.message);
+      alert('err')
+    };
+    
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  }
+  
   // 查找
   onChange = value => {
     if(value != "")
